@@ -38,11 +38,13 @@ public class PageFragment extends Fragment {
         if (savedInstanceState != null){
             title = savedInstanceState.getString(TITLE);
             number = savedInstanceState.getInt(NUMBER);
+            Log.d(TAG, "onCreate from saveInstanceState: " + title + " -> " + number);
         }else {
             Bundle args = getArguments();
             if (args != null) {
                 title = args.getString(TITLE);
                 number = args.getInt(NUMBER);
+                Log.d(TAG, "onCreate from arguments: " + title + " -> " + number);
             }
         }
     }
@@ -69,6 +71,7 @@ public class PageFragment extends Fragment {
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
+        Log.d(TAG, "onSaveInstanceState: " + title + " -> " + number);
         outState.putString(TITLE, title);
         outState.putInt(NUMBER, number);
         super.onSaveInstanceState(outState);
